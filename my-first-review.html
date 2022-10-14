@@ -36,7 +36,7 @@
 
 
 
-    <meta name="description" content="Following is a review of my favorite mechanical keyboard.">
+    <meta name="description" content="搭建自己的博客（pelican+GitHub） （1）重中之重：会执行终端中的基础命令 Pelican线路：安装配置pyenv（负责用来将不同的python解释器同时控制不 …">
 
     <meta name="author" content="k-k1234">
 
@@ -47,11 +47,11 @@
 <!-- Open Graph -->
 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="k-k1234"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:title" content="My First Review"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Following is a review of my favorite mechanical keyboard."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="搭建自己的博客（pelican+GitHub） （1）重中之重：会执行终端中的基础命令 Pelican线路：安装配置pyenv（负责用来将不同的python解释器同时控制不 …"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="/my-first-review.html"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2022-09-29 12:30:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2022-10-14 21:00:00+02:00"/>
 <meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
 <meta prefix="og: http://ogp.me/ns#" property="article:author" content="/author/k-k1234.html">
 <meta prefix="og: http://ogp.me/ns#" property="article:section" content="Review"/>
@@ -65,7 +65,7 @@
   "@type": "Article",
   "name": "My First Review",
   "headline": "My First Review",
-  "datePublished": "2022-09-29 12:30:00+02:00",
+  "datePublished": "2022-10-14 21:00:00+02:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -74,7 +74,7 @@
   },
   "image": "/theme/images/post-bg.jpg",
   "url": "/my-first-review.html",
-  "description": "Following is a review of my favorite mechanical keyboard."
+  "description": "搭建自己的博客（pelican+GitHub） （1）重中之重：会执行终端中的基础命令 Pelican线路：安装配置pyenv（负责用来将不同的python解释器同时控制不 …"
 }
 </script>
 </head>
@@ -112,7 +112,7 @@
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="/author/k-k1234.html">K-K1234</a>
-            | <time datetime="四 29 九月 2022">四 29 九月 2022</time>
+            | <time datetime="五 14 十月 2022">五 14 十月 2022</time>
         </span>
       </div>
     </header>
@@ -125,7 +125,40 @@
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>Following is a review of my favorite mechanical keyboard.</p>
+                <h1>搭建自己的博客（pelican+GitHub）</h1>
+<h2>（1）重中之重：会执行终端中的基础命令</h2>
+<p>Pelican线路：安装配置pyenv（负责用来将不同的python解释器同时控制不同的包环境）后就可以直接安装配置python(这是pelicande环境)，之后直接安装配置pip(python的工具包)后直接安装配置virtualenv（解决不同python版本冲突，使不同项目之间相互不干扰），最后安装pelican（部署pelican）
+Github线路：注册Github，建立自己的库（部署GitHub）</p>
+<h2>（2）大致流程</h2>
+<p>Typora(或VScode)：写文章，建立Markdown文件
+Pelican：将Markdown文件转变成html文件
+安装git：负责将pelican处理成的html文件传到Github中自己的库内
+Github：将html文件转化，展现在网页上</p>
+<h2>（3）其他的话</h2>
+<p>这么做的原因：Markdown文件易写（也要学Markdown语言）,而html难写得多，效率低（这就是为什么要费力使用pelican）
+不重要的：make语言（利于pelican中文件管理，但make语言需要配置）
+推荐使用的：Github desktop软件，无需密码（不是注册密码，而是SSH密码，获取SSH密码麻烦，坑死人了qwq）就可以git push到Github自己的库中
+剩下的每个配置的具体过程以及报错的解决就不写了，累死了qwq</p>
+<h2>拓展：生成html文件，git使用，共享文件夹问题解决</h2>
+<div class="highlight"><pre><span></span><code>pelican content
+</code></pre></div>
+
+<p>生成</p>
+<div class="highlight"><pre><span></span><code>git add .
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>git commit -a -m &quot;你输入的内容&quot;
+</code></pre></div>
+
+<p>之后用Github desktop软件，登陆后在自己的Github库下点击git push，就发送成功了.^^.</p>
+<div class="highlight"><pre><span></span><code>sudo umount /mnt/hgfs
+</code></pre></div>
+
+<p>取消挂载</p>
+<div class="highlight"><pre><span></span><code>sudo /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other -o uid=1000 -o gid=1000 -o umask=022
+</code></pre></div>
+
+<p>挂载</p>
             </section>
 
             <section class="post-info">
