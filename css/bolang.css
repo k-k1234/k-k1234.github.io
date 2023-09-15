@@ -76,11 +76,11 @@
 
 
 
-/*标题左置*/
+/*标题左置
 #post-info {
     text-align: left!important;
 }
-
+*/
 
 /*所有页面实现毛玻璃特效*/
 #aside-content{
@@ -114,6 +114,11 @@
     background: rgba(255,255,255,0.5);
     backdrop-filter: blur(50px);
 }
+
+
+
+
+
 
 
 
@@ -311,3 +316,16 @@
 }
 
 
+/*time*/
+div#runtime {
+    width: fit-content;
+    color: #fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] div#runtime {
+    color: #28b4c8;
+    box-shadow: 0 0 5px rgba(28, 69, 218, 0.71);
+}
