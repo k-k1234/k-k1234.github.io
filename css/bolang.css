@@ -319,6 +319,6 @@
 
 /*loading图*/
 .loading-img {
-    background: url(https://img01.anheyu.com/useruploads/110/2023/04/03/642a735c50e6d.jpg) no-repeat center center;
+    background: url(https://cdn.jsdelivr.net/gh/HappyLeeCode/IMG/img/avatar.webp) no-repeat center center;
     background-size: cover;
   }
