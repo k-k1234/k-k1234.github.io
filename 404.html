@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-10-10 21:02:25'
+  postUpdate: '2024-04-14 11:19:59'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -162,7 +162,10 @@
 loadingPercentage.style.color = "black";
 let loadingPercentageTimer = setInterval(function() {
   var progressBar = document.querySelector(".pace-progress");
-  if (!progressBar) return
+  if (!progressBar) {
+    loadingPercentage.textContent = "0%";
+    return;
+  }
   var currentValue = progressBar.getAttribute("data-progress-text");
   if (currentValue !== loadingPercentage.textContent) {
     loadingPercentage.textContent = currentValue;
