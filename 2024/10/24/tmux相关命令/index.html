@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>tmux相关命令 | Aurora-Be's Blog</title><meta name="author" content="Aurora-Be"><meta name="copyright" content="Aurora-Be"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考Getting Started · tmux&#x2F;tmux Wiki (github.com) 简明速查 | 🌟🌟🌟🌟🌟 (leftshadow.com) Tmux教程 （一文就够）-CSDN博客 Tmux 使用教程 - 阮一峰的网络日志 (ruanyifeng.com) session新建会话1tmux  使用new-session命令（简称new）创建新会话： -s标志为会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tmux相关命令">
+<meta property="og:url" content="http://example.com/2024/10/24/tmux%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Aurora-Be&#39;s Blog">
+<meta property="og:description" content="参考Getting Started · tmux&#x2F;tmux Wiki (github.com) 简明速查 | 🌟🌟🌟🌟🌟 (leftshadow.com) Tmux教程 （一文就够）-CSDN博客 Tmux 使用教程 - 阮一峰的网络日志 (ruanyifeng.com) session新建会话1tmux  使用new-session命令（简称new）创建新会话： -s标志为会">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/tit.jpg">
+<meta property="article:published_time" content="2024-10-24T14:44:04.000Z">
+<meta property="article:modified_time" content="2024-10-24T14:44:49.050Z">
+<meta property="article:author" content="Aurora-Be">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/tit.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/10/24/tmux%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'tmux相关命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-24 22:44:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/bolang.css?1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Aurora-Be's Blog" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tit.jpg"/><div class="loading-image-dot"></div><div id="loading-percentage">0%</div></div></div><script>const loadingPercentage = document.getElementById("loading-percentage");
+loadingPercentage.style.color = "black";
+let loadingPercentageTimer = setInterval(function() {
+  var progressBar = document.querySelector(".pace-progress");
+  if (!progressBar) {
+    loadingPercentage.textContent = "0%";
+    return;
+  }
+  var currentValue = progressBar.getAttribute("data-progress-text");
+  if (currentValue !== loadingPercentage.textContent) {
+    loadingPercentage.textContent = currentValue;
+    if (currentValue === "100%") {
+      clearInterval(loadingPercentageTimer);
+    }
+  }
+}, 100);
+const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tit.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly/"><i class="fa-fw fa fa-heart"></i><span> butterfly主题</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_img.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Aurora-Be's Blog"><span class="site-name">Aurora-Be's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly/"><i class="fa-fw fa fa-heart"></i><span> butterfly主题</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">tmux相关命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-24T14:44:04.000Z" title="发表于 2024-10-24 22:44:04">2024-10-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-24T14:44:49.050Z" title="更新于 2024-10-24 22:44:49">2024-10-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="tmux相关命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://github.com/tmux/tmux/wiki/Getting-Started">Getting Started · tmux&#x2F;tmux Wiki (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://think.leftshadow.com/docs/tmux/tmux/">简明速查 | 🌟🌟🌟🌟🌟 (leftshadow.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CSSDCC/article/details/121231906">Tmux教程 （一文就够）-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">Tmux 使用教程 - 阮一峰的网络日志 (ruanyifeng.com)</a></p>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><h3 id="新建会话"><a href="#新建会话" class="headerlink" title="新建会话"></a>新建会话</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>new-session</code>命令（简称<code>new</code>）创建新会话：</p>
+<p><code>-s</code>标志为会话指定名称：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s mysession</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看会话"><a href="#查看会话" class="headerlink" title="查看会话"></a>查看会话</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmux <span class="built_in">ls</span></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">tmux list-session</span><br></pre></td></tr></table></figure>
+
+<h3 id="接入会话"><a href="#接入会话" class="headerlink" title="接入会话"></a>接入会话</h3><p><code>attach-session</code>命令附加到现有会话。如果没有参数，它将附加到最近使用但尚未附加的会话：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux attach</span><br></pre></td></tr></table></figure>
+
+<p>或者<code>-t</code>给出要附加到的会话的名称：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux attach -t mysession</span><br></pre></td></tr></table></figure>
+
+<h3 id="暂时离开会话"><a href="#暂时离开会话" class="headerlink" title="暂时离开会话"></a>暂时离开会话</h3><p><code>C-b d</code>键暂时离开(detach)当前会话</p>
+<h3 id="杀死会话"><a href="#杀死会话" class="headerlink" title="杀死会话"></a>杀死会话</h3><p><code>kill-session</code>命令杀死附加的会话及其所有窗口，并分离客户端。<code>kill-session</code>没有键绑定，但可以在命令提示符或树模式下的<code>:</code>提示符下使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t your-session-name</span><br></pre></td></tr></table></figure>
+
+<p>当然，也可以使用<code>ctrl+d</code>关闭</p>
+<p>关闭所有会话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-server</span><br></pre></td></tr></table></figure>
+
+<p>在命令提示符下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:kill-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换会话"><a href="#切换会话" class="headerlink" title="切换会话"></a>切换会话</h3><p>切换到指定会话：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux switch -t your-session-name</span><br></pre></td></tr></table></figure>
+
+<h3 id="重命名会话"><a href="#重命名会话" class="headerlink" title="重命名会话"></a>重命名会话</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux rename-session -t old-session new-session</span><br></pre></td></tr></table></figure>
+
+<p>按<code>C-b $</code> 重命名当前会话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:rename-session [新会话名]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="创建新窗口"><a href="#创建新窗口" class="headerlink" title="创建新窗口"></a>创建新窗口</h3><p>可以用运行<code>C-b c</code>命令的<code>new-window</code>键在附加的会话中创建。</p>
+<p><code>-n</code>允许为新窗口命名。例如，使用命令提示符创建一个名为<code>mynewwindow</code>的窗口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:neww -n mynewwindow</span><br></pre></td></tr></table></figure>
+
+<p>或：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 新建一个指定名称的窗口</span><br><span class="line">tmux new-window -n your-window-name</span><br></pre></td></tr></table></figure>
+
+<h3 id="重命名窗口"><a href="#重命名窗口" class="headerlink" title="重命名窗口"></a>重命名窗口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux rename-window -t old_name new_name</span><br></pre></td></tr></table></figure>
+
+<p><code>C-b ,</code>窗口重命名</p>
+<h3 id="切换窗口"><a href="#切换窗口" class="headerlink" title="切换窗口"></a>切换窗口</h3><p><code>C-b &lt;number&gt;</code>切换到指定编号的窗口</p>
+<p><code>C-b p</code>按编号切换到窗口列表中的上一个窗口</p>
+<p><code>C-b n</code>按编号切换到窗口列表中的下一个窗口</p>
+<p><code>C-b &#39;</code>提示输入窗口索引并切换到该窗口</p>
+<p><code>C-b l</code>切换到最后一个窗口</p>
+<p><code>C-b o</code>按序号递增切换窗口</p>
+<h3 id="终止窗口"><a href="#终止窗口" class="headerlink" title="终止窗口"></a>终止窗口</h3><p>按下<code>C-b &amp;</code>提示确认，杀死当前窗口</p>
+<h3 id="查找窗口"><a href="#查找窗口" class="headerlink" title="查找窗口"></a>查找窗口</h3><p>按下<code>C-b f</code>输入字符串</p>
+<h2 id="pane"><a href="#pane" class="headerlink" title="pane"></a>pane</h2><h3 id="划分窗格"><a href="#划分窗格" class="headerlink" title="划分窗格"></a>划分窗格</h3><p><code>C-b %</code>将当前窗格水平划分为上下两个窗格</p>
+<p><code>C-b &quot;</code>将当前窗格垂直划分为左右两个窗格</p>
+<h3 id="切换窗格"><a href="#切换窗格" class="headerlink" title="切换窗格"></a>切换窗格</h3><p><code>C-b &lt;arrow key&gt;</code>光标切换到其他窗格</p>
+<p><code>C-b q</code>显示窗格编号。<code>C-b q 1</code>光标切换到窗格1。</p>
+<h3 id="交换窗格"><a href="#交换窗格" class="headerlink" title="交换窗格"></a>交换窗格</h3><ul>
+<li><code>Ctrl+b &#123;</code>：当前窗格与上一个窗格交换位置。</li>
+<li><code>Ctrl+b &#125;</code>：当前窗格与下一个窗格交换位置。</li>
+<li><code>Ctrl+b Ctrl+o</code>：所有窗格按编号递增交换。</li>
+</ul>
+<p>为了使交换变得容易，可以标记单个窗格。所有会话中都有一个标记窗格。<code>C-b m</code>键绑定用于切换附加会话中当前窗口中的活动窗格是否为标记窗格。<code>C-b M</code>完全清除标记的窗格，以便不标记任何窗格。标记窗格的边框以绿色背景显示，并且包含标记窗格的窗口在状态行中具有<code>M</code>标志。</p>
+<p>标记窗格后，可以使用<code>swap-pane</code>命令将其与当前窗口中的活动窗格交换，或者使用<code>swap-window</code>命令将包含标记窗格的窗口与当前窗口交换。例如，使用命令提示符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:swap-pane</span><br></pre></td></tr></table></figure>
+
+<h3 id="调整窗格大小"><a href="#调整窗格大小" class="headerlink" title="调整窗格大小"></a>调整窗格大小</h3><p>可以使用<code>C-b C-&lt;arrow key&gt;</code>按箭头方向调整窗格大小</p>
+<h3 id="窗格最大化"><a href="#窗格最大化" class="headerlink" title="窗格最大化"></a>窗格最大化</h3><p>单个窗格可以临时地用<code>C-b z</code>占据整个窗口，隐藏任何其他窗格。再次按下<code>C-b z</code>会将窗格和窗口布局恢复到原来的状态。</p>
+<h3 id="关闭窗格"><a href="#关闭窗格" class="headerlink" title="关闭窗格"></a>关闭窗格</h3><p><code>C-b x</code>关闭当前窗格</p>
+<h3 id="默认窗格布局"><a href="#默认窗格布局" class="headerlink" title="默认窗格布局"></a>默认窗格布局</h3><p><code>C-b Space</code>窗口中的窗格自动排列</p>
+<h3 id="窗格变窗口"><a href="#窗格变窗口" class="headerlink" title="窗格变窗口"></a>窗格变窗口</h3><p><code>Ctrl+b !</code>：将当前窗格拆分为一个独立窗口</p>
+<h2 id="全局管理会话、窗口和窗格"><a href="#全局管理会话、窗口和窗格" class="headerlink" title="全局管理会话、窗口和窗格"></a>全局管理会话、窗口和窗格</h2><p>有两个键绑定可以进入树模式：<code>C-b s</code>开始仅显示会话，并选择附加会话; <code>C-b w</code>开始扩展会话，以便显示窗口，并选择附加会话中的当前窗口。</p>
+<p>树中的项目通过按<code>t</code>进行标记，并通过再次按<code>t</code>取消标记。标记的项目以粗体显示，并在其名称后添加<code>*</code>。<code>C-t</code>标记所有项目。按<code>T</code>可取消所有已标记项目的标记。标记的项目可以通过按<code>X</code>一起杀死。</p>
+<p>树中的每个项目都有一个快捷键，位于行首的方括号中。按下此键将立即选择该项目（就像它已被选中并按下<code>Enter</code>）。前十项是键<code>0</code>至<code>9</code>，之后使用键<code>M-a</code>至<code>M-z</code>。</p>
+<h2 id="复制模式"><a href="#复制模式" class="headerlink" title="复制模式"></a>复制模式</h2><p>使用复制模式复制文本，使用<code>C-b [</code>输入，并使用<code>C-b ]</code>将最近复制的文本粘贴到活动窗格中。</p>
+<p>复制模式使用类似于emacs（1）的键</p>
+<table>
+<thead>
+<tr>
+<th>Key关键</th>
+<th>Action行动</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>C-Space</code></td>
+<td>开始选择复制</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>复制所选内容</td>
+</tr>
+<tr>
+<td><code>Alt-w</code>或<code>C-w</code></td>
+<td>复制所选内容并退出复制模式</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>退出复制模式</td>
+</tr>
+<tr>
+<td><code>C-g</code></td>
+<td>停止选择而不复制、停止搜索</td>
+</tr>
+<tr>
+<td><code>C-a</code></td>
+<td>将光标移动到行首</td>
+</tr>
+<tr>
+<td><code>C-e</code></td>
+<td>将光标移动到行尾</td>
+</tr>
+<tr>
+<td><code>M-b</code></td>
+<td>上一个词</td>
+</tr>
+<tr>
+<td><code>M-f</code></td>
+<td>下一个词</td>
+</tr>
+</tbody></table>
+<p><code>PgUp</code>向上翻页</p>
+<p><code>PgDn</code>向下翻页</p>
+<p><code>Alt+&lt;arrow key&gt;</code>移动半页</p>
+<p><code>g + nubmer</code>光标移动到指定行</p>
+<p><code>C-s</code>查找字符串，<code>n</code>或<code>C-s</code>往前走，<code>C-r</code>或<code>N</code>往后走，<code>Enter</code>确认</p>
+<p>显示缓冲区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:show-buffer</span><br></pre></td></tr></table></figure>
+
+<p>保存缓冲区到文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:save-buffer ./1.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><table>
+<thead>
+<tr>
+<th>描述</th>
+<th>cmd</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>窗口中央显示一个数字时钟</td>
+<td><code>Ctrl+b t</code></td>
+</tr>
+<tr>
+<td>列出所有快捷键</td>
+<td><code>Ctrl+b ?</code></td>
+</tr>
+<tr>
+<td>进入命令行模式</td>
+<td><code>Ctrl+b :</code></td>
+</tr>
+</tbody></table>
+<h2 id="命令和标志"><a href="#命令和标志" class="headerlink" title="命令和标志"></a>命令和标志</h2><p>这些都有一个像<code>new-window</code>或<code>new-session</code>或<code>list-keys</code>的名字，许多也有一个较短的别名，如<code>neww</code>或<code>new</code>或<code>lsk</code></p>
+<h2 id="配置tmux"><a href="#配置tmux" class="headerlink" title="配置tmux"></a>配置tmux</h2><p><code>.tmux.conf</code>仅在服务器启动时运行，而不是在创建新会话时运行。</p>
+<p>可以从<code>.tmux.conf</code>或使用<code>source-file</code>命令从正在运行的tmux服务器运行不同的配置文件，例如使用命令提示符从正在运行的服务器再次运行<code>.tmux.conf</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:source ~/.tmux.conf</span><br></pre></td></tr></table></figure>
+
+<p>tmux-plugins中<code>C+b I</code>安装插件</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Aurora-Be</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/10/24/tmux%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">http://example.com/2024/10/24/tmux相关命令/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Aurora-Be's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/tit.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/10/24/WSL2%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="WSL2相关命令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">WSL2相关命令</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tit.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Aurora-Be</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session"><span class="toc-number">2.</span> <span class="toc-text">session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E4%BC%9A%E8%AF%9D"><span class="toc-number">2.1.</span> <span class="toc-text">新建会话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BC%9A%E8%AF%9D"><span class="toc-number">2.2.</span> <span class="toc-text">查看会话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%85%A5%E4%BC%9A%E8%AF%9D"><span class="toc-number">2.3.</span> <span class="toc-text">接入会话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%82%E6%97%B6%E7%A6%BB%E5%BC%80%E4%BC%9A%E8%AF%9D"><span class="toc-number">2.4.</span> <span class="toc-text">暂时离开会话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%80%E6%AD%BB%E4%BC%9A%E8%AF%9D"><span class="toc-number">2.5.</span> <span class="toc-text">杀死会话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E4%BC%9A%E8%AF%9D"><span class="toc-number">2.6.</span> <span class="toc-text">切换会话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D"><span class="toc-number">2.7.</span> <span class="toc-text">重命名会话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#window"><span class="toc-number">3.</span> <span class="toc-text">window</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%AA%97%E5%8F%A3"><span class="toc-number">3.1.</span> <span class="toc-text">创建新窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E7%AA%97%E5%8F%A3"><span class="toc-number">3.2.</span> <span class="toc-text">重命名窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3"><span class="toc-number">3.3.</span> <span class="toc-text">切换窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E6%AD%A2%E7%AA%97%E5%8F%A3"><span class="toc-number">3.4.</span> <span class="toc-text">终止窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E7%AA%97%E5%8F%A3"><span class="toc-number">3.5.</span> <span class="toc-text">查找窗口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pane"><span class="toc-number">4.</span> <span class="toc-text">pane</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%92%E5%88%86%E7%AA%97%E6%A0%BC"><span class="toc-number">4.1.</span> <span class="toc-text">划分窗格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E7%AA%97%E6%A0%BC"><span class="toc-number">4.2.</span> <span class="toc-text">切换窗格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%AA%97%E6%A0%BC"><span class="toc-number">4.3.</span> <span class="toc-text">交换窗格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E7%AA%97%E6%A0%BC%E5%A4%A7%E5%B0%8F"><span class="toc-number">4.4.</span> <span class="toc-text">调整窗格大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E6%A0%BC%E6%9C%80%E5%A4%A7%E5%8C%96"><span class="toc-number">4.5.</span> <span class="toc-text">窗格最大化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E7%AA%97%E6%A0%BC"><span class="toc-number">4.6.</span> <span class="toc-text">关闭窗格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E7%AA%97%E6%A0%BC%E5%B8%83%E5%B1%80"><span class="toc-number">4.7.</span> <span class="toc-text">默认窗格布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E6%A0%BC%E5%8F%98%E7%AA%97%E5%8F%A3"><span class="toc-number">4.8.</span> <span class="toc-text">窗格变窗口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D%E3%80%81%E7%AA%97%E5%8F%A3%E5%92%8C%E7%AA%97%E6%A0%BC"><span class="toc-number">5.</span> <span class="toc-text">全局管理会话、窗口和窗格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E6%A8%A1%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">复制模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%82%E9%A1%B9"><span class="toc-number">7.</span> <span class="toc-text">杂项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%92%8C%E6%A0%87%E5%BF%97"><span class="toc-number">8.</span> <span class="toc-text">命令和标志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEtmux"><span class="toc-number">9.</span> <span class="toc-text">配置tmux</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/24/tmux%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="tmux相关命令">tmux相关命令</a><time datetime="2024-10-24T14:44:04.000Z" title="发表于 2024-10-24 22:44:04">2024-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/24/WSL2%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="WSL2相关命令">WSL2相关命令</a><time datetime="2024-10-24T14:42:30.000Z" title="发表于 2024-10-24 22:42:30">2024-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/10/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" title="图片测试">图片测试</a><time datetime="2024-09-10T11:54:45.000Z" title="发表于 2024-09-10 19:54:45">2024-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/hello-world/" title="Hello World">Hello World</a><time datetime="2023-09-13T09:06:55.976Z" title="发表于 2023-09-13 17:06:55">2023-09-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 <i id="heartbeat" class="fa fas fa-heartbeat"></i> Aurora-Be</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
